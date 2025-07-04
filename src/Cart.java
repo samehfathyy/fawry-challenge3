@@ -35,6 +35,10 @@ public class Cart {
             Items.add(newItem);
             return;
         }
+        if(availableQuantity==0){
+            System.out.printf("we are sorry! %s is out of Stock\n",product.getName());
+            return;
+        }
         System.out.printf("we are sorry! only %d items of %s is available\n",availableQuantity,product.getName());
 
     }
@@ -94,9 +98,11 @@ if (Items.isEmpty()){
         for (CartItem item:Items){
             Product product = repo.getProduct(item.getProductId());
             int quantity= item.getQuantity();
+            int newQuantity = product.getAvailable_quantity()-quantity;
             String name = product.getName();
             double subtotalForThisItem = product.getPrice()*quantity;
             System.out.printf("%2dx %-15s %5.2f\n", quantity, name, subtotalForThisItem);
+            repo.updateQuantity(item.getProductId(),newQuantity);
         }
         System.out.println("-------------------------");
             System.out.printf("%-20s %10.2f\n", "Subtotal:", subtotal);

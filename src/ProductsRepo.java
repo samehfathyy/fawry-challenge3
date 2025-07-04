@@ -27,4 +27,7 @@ public class ProductsRepo {
     public boolean checkQuantity(int ProductId,int Quantity){
         return products.get(ProductId).getAvailable_quantity() >= Quantity;
     }
+    public void updateQuantity(int productId,int newQuantity){
+        products.get(productId).setAvailable_quantity(newQuantity);
+    }
 }

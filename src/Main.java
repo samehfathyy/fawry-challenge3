@@ -34,10 +34,10 @@ public class Main {
         */
         double balance=50000;
         cart.Add_item(0,1);
-        cart.Add_item(2,5);
+        cart.Add_item(2,10);
         cart.Add_item(3,1);
-
         cart.checkOut(balance);
+        cart.Add_item(2,10);
 
     }
 }
